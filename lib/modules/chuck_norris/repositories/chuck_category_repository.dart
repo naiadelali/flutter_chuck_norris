@@ -15,7 +15,7 @@ class ChuckCategoryRepository {
 
   Future<List<ChuckCategoryModel>> fetchChuckCategoryData() async {
     try {
-      final response = await _dio.get("${consts.url_base}jokes/categories");
+      final response = await _dio.get("${consts.urlBase}jokes/categories");
       if (response.data == null) throw HttpError.invalidData;
       return ChuckCategoryModel.fromJsonList(response.data);
     } on DioError catch (e) {

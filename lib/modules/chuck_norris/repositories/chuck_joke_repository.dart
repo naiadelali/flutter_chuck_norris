@@ -12,7 +12,7 @@ class ChuckNorrisJokeRepository {
       {required String category}) async {
     try {
       var response =
-          await _dio.get('${consts.url_base}jokes/random?category=$category');
+          await _dio.get('${consts.urlBase}jokes/random?category=$category');
       if (response.data == null) throw HttpError.invalidData;
       return ChuckJokeModel.fromJson(response.data);
     } on DioError catch (e) {

@@ -1,1 +1,1 @@
-const url_base = 'https://api.chucknorris.io/';
+const urlBase = 'https://api.chucknorris.io/';
