@@ -21,10 +21,6 @@ class JokePage extends StatefulWidget {
 
 class _JokePageState extends State<JokePage> {
   final _controller = JokeController();
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +42,7 @@ class _JokePageState extends State<JokePage> {
               default:
                 if (snapshot.hasData) {
                   return Stack(
+                    alignment: Alignment.center,
                     children: <Widget>[
                       CustomGradientWidget(),
                       JokeBodyWidget(displayJoke: snapshot.data),

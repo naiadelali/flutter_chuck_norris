@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:flutter_chuck_norris/modules/chuck_norris/models/chuck_categories_model.dart';
+import '../models/chuck_categories_model.dart';
 
 import '../../../common/enums/http_error_enum.dart';
 import '../../../common/errors.dart';

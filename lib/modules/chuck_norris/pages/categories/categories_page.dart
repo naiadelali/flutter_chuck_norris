@@ -13,12 +13,7 @@ class CategoriesPage extends StatefulWidget {
 }
 
 class _CategoriesPageState extends State<CategoriesPage> {
-  final _controller = ChuckNorrisController();
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  late final _controller = ChuckNorrisController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,27 +21,28 @@ class _CategoriesPageState extends State<CategoriesPage> {
         title: 'Chuck Norris Jokes',
       ),
       body: FutureBuilder<List<ChuckCategoryModel>>(
-          future: _controller.getJokesCategories(),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              case ConnectionState.none:
-                return Text('Não retornou nada');
-              default:
-                if (snapshot.hasData) {
-                  return ListCategoriesWidget(categories: snapshot.data ?? []);
+        future: _controller.getJokesCategories(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            case ConnectionState.none:
+              return Text('Não retornou nada');
+            default:
+              if (snapshot.hasData) {
+                return ListCategoriesWidget(categories: snapshot.data ?? []);
+              } else {
+                if (snapshot.error is Exception) {
+                  return Text(snapshot.error.toString());
                 } else {
-                  if (snapshot.error is Exception) {
-                    return Text(snapshot.error.toString());
-                  } else {
-                    return Text('Outra coisa');
-                  }
+                  return Text('Outra coisa');
                 }
-            }
-          }),
+              }
+          }
+        },
+      ),
     );
   }
 }
